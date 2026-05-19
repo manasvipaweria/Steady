@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEADY - Study Easier</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed; /* Set header to be fixed */
+            width: 100%; /* Make the header span the full width */
+            top: 0; /* Align the header to the top */
+            z-index: 1000; /* Ensure the header is above other content */
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.5em;
+            margin: 0;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            margin-right: 10px;
+        }
+
+        .button {
+            background-color: #ff9900;
+            color: #000;
+            margin-right: 10px;
+            padding: 10px 30px;
+            font-size: 1em;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            line-height: 1.5em;
+        }
+
+        .hero {
+            background-image: url('WhatsApp Image 2024-06-10 at 10.27.35 PM.jpeg');
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 150px 20px;
+        }
+
+        .hero h2 {
+            font-size: 6em;
+            margin: 0 0 10px 0;
+        }
+
+        .hero h2 .highlight {
+            color: #ff9900;
+        }
+
+        .hero p {
+            font-size: 2em;
+            color: #666;
+            font-weight: bold;
+            margin: 10px 0 20px 0;
+        }
+
+        .search-bar {
+            width: 500px;
+            padding: 10px;
+            border: 1px solid #000;
+            border-radius: 25px;
+            margin-bottom: 50px;
+            font-size: 1.2em;
+        }
+
+        .search-bar::placeholder {
+            color: #000;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .cta {
+            position: relative;
+            width: 600px;
+            height: 300px;
+            background-color: #ff9900;
+            color: #333;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cta img {
+            position: absolute;
+            top: -60px;
+            left: -60px;
+            width: 300px;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        .cta h3 {
+            margin: 0;
+            font-size: 1.5em;
+            padding: 0 50px;
+        }
+
+        .features {
+            padding-top: 150px;
+            padding-left: 200px;
+            padding-right: 200px;
+            background-image: url('WhatsApp Image 2024-06-10 at 10.27.35 PM.jpeg');
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: left;
+        }
+
+        .features img {
+            width: 100%;
+            height: auto;
+            max-width: 500px;
+            max-height: 300px;
+            margin: 0 auto;
+            transition: transform 1s; /* Adding transition for smooth scaling */
+        }
+
+        .features img:hover {
+            transform: scale(1.1); /* Scaling the image up on hover */
+        }
+
+        .features h4, .features p {
+            max-width: 80%;
+            margin: 10px auto 0 auto;
+        }
+
+        .features h4 {
+            font-size: 1.2em;
+        }
+
+        .features p {
+            font-size: 1em;
+        }
+
+        body {
+            background-image: url('WhatsApp Image 2024-06-10 at 10.27.35 PM.jpeg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: sans-serif;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .content {
+            flex: 1;
+            text-align: left;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .buttonn {
+            display: inline-block;
+            background-color: #ff9900;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="WhatsApp Image 2024-06-10 at 10.22.08 PM.jpeg" alt="STEADY Logo">
+            <h1>STEADY</h1>
+        </div>
+        <div class="buttons">
+            <button class="button"><a href="login.html">Login</a></button>
+            <button class="button"><a href="signup.html">Sign up for free</a></button>
+
+        </div>
+    </header>
+
+    <main class="hero">
+        <h2>Study with <span class="highlight">STEADY</span></h2>
+        <p>easier, faster & better.</p>
+        <input type="text" class="search-bar" placeholder="SEARCH">
+        <div class="cta">
+            <img src="Study_from_STEADY-3-removebg-preview.png" alt="Top Left Image">
+            <h3>University or college studying has never been easier !!!</h3>
+        </div>
+    </main>
+
+    <section class="features">
+        <div>
+            <img src="Screenshot 2024-06-10 at 11.14.24 PM.jpg" alt="Live Classes Icon"> 
+            <h4>Daily Live Classes</h4>
+            <p>Chat with educators, ask questions, answer live polls, and get your doubts cleared - all while the class is going on.</p>
+        </div>
+        <div>
+            <img src="Screenshot 2024-06-10 at 11.14.39 PM.jpg" alt="Practice and Revise Icon"> 
+            <h4>Practice and Revise</h4>
+            <p>Learning isn't just limited to classes with our practice section, mock tests and lecture notes shared as PDFs for your revision.</p>
+        </div>
+        <div>
+            <img src="Screenshot 2024-06-10 at 11.14.51 PM.jpg" alt="Learn Anytime, Anywhere Icon"> 
+            <h4>Learn Anytime, Anywhere</h4>
+            <p>One subscription gets you access to all our live and recorded classes to watch from the comfort of any of your devices.</p>
+        </div>
+    </section>
+    
+    <div class="container">
+        <div class="content">
+            <h1>Start learning with STEADY</h1>
+            <p>Get unlimited access to structured courses & doubt clearing sessions</p>
+            <a href="youtube.html" class="buttonn">Start Learning ></a>
+        </div>
+        <div class="image-container">
+            <img src="logo-3-removebg-preview.png" alt="Image" class="image">
+        </div>
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script>
+          const sr = ScrollReveal({
+              origin: 'top',
+              distance: '60px',
+              duration: 2000,
+              delay: 200,
+          });
+  
+          sr.reveal('.hero, .features', { delay: 200 });
+      </script>
+    </div>
+</body>
+</html>

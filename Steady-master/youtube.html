@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Steady </title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    p {
+      font-family: Roboto, Arial;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    .sidebar {
+      background-color: white;
+      position: fixed;
+      left: 0;
+      top: 55px;
+      bottom: 0;
+      width: 100px;
+      z-index: 200;
+      padding-top: 5px;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; 
+      background-image: url('WhatsApp Image 2024-06-10 at 10.27.35 PM.jpeg');
+      border: 1px solid black;
+    }
+    .sidebar.collapsed {
+      width: 250px; /* Adjust the width as needed */
+    }
+
+    .sidebar.collapsed .link img {
+      margin-right: 16px; /* Adjust the margin as needed */
+    }
+
+    .sidebar.collapsed .link div {
+      display: inline; /* Show the text label */
+    }
+    .thumbnail {
+      width: 100%;
+    }
+
+    .search-bar {
+      display: block;
+    }
+
+    .video-title {
+      margin-top: 0;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+      margin-bottom: 10px;
+    }
+  .video-preview{
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adjust the shadow as needed */
+    padding: 20px; /* Adjust the padding as needed */
+    border-radius: 8px;
+  }
+    .video-info-grid {
+      display: grid;
+      grid-template-columns:  1fr;
+    }
+
+    .profile-picture {
+      width: 36px;
+      border-radius: 50px;
+    }
+
+    .thumbnail-row {
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    .video-author,
+    .video-stats {
+      font-size: 12px;
+      color: rgb(96, 96, 96);
+    }
+
+    .video-author {
+      margin-bottom: 4px;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      column-gap: 16px;
+      row-gap: 40px;
+      
+    }
+    .ham {
+      height: 20px;
+      cursor: pointer;
+    }
+    .you {
+      height: 24px;
+      margin-left: 24px;
+      margin-right: 24px;
+    }
+    .search {
+      height: 25px;
+      margin-top: 4px;
+    }
+    .voice {
+      height: 24px;
+      margin-top: 4px;
+      background-color: rgb(245, 245, 245);
+    }
+    .voi {
+      height: 40px;
+      width: 40px;
+      border-radius: 20px;
+      border: none;
+    }
+    .sea {
+      height: 40px;
+      width: 66px;
+      background-color: rgb(240, 240, 240);
+      border-width: 1px;
+      border-style: solid;
+      margin-left: -1px;
+      margin-right: 10px;
+      position: relative;
+    }
+    .sea.tooltip {
+      position: absolute;
+      background-color: gray;
+      color: white;
+      padding-left: 8px;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      padding-right: 8px;
+      border-radius: 2px;
+      font-size: 12px;
+      bottom: -30px;
+      opacity: 0;
+      transition: opacity 0.15ms;
+    }
+    .sea:hover.tooltip {
+      opacity: 1;
+    }
+    .search-bar {
+      flex: 1;
+      height: 36px;
+      padding-left: 10px;
+      font-size: 16px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgb(192, 192, 192);
+      border-radius: 2px;
+      box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.15);
+      width: 0;
+    }
+    .content {
+  margin: 40px; /* Add margin to the top */
+  padding: 20px; /* Add padding */
+}
+
+.content h1 {
+  font-size: 35px; /* Increase the font size */
+}
+
+.content p {
+  font-size: 25px; /* Increase the font size */
+}
+
+    .search-bar::placeholder {
+      font-family: Roboto, Arial;
+      font-size: 16px;
+    }
+    .up {
+      height: 24px;
+    }
+    .apps {
+      height: 24px;
+    }
+    .notifications {
+      height: 24px;
+    }
+    .channel {
+      height: 32px;
+      border-radius: 16px;
+    }
+    .time {
+      color: white;
+      background-color: black;
+      position: absolute;
+      bottom: 8px;
+      right: 5px;
+      font-family: Roboto, Arial;
+      font-size: 12px;
+      font-weight: 500;
+      padding-left: 4px;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      padding-right: 4px;
+      border-radius: 2px;
+    }
+    .link {
+      height: 74px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .link:hover {
+      background-color: rgb(235, 235, 235);
+    }
+    .link img {
+      height: 24px;
+      
+    }
+    .buttons {
+  margin-top: 20px;
+  text-align: center; /* Center align the buttons */
+}
+
+.free-trial,
+.buy-course {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ffcc00; /* Dark yellow */
+  color: white;
+  text-decoration: none;
+  border-radius: 25px; /* Increase border radius to make it round */
+  margin-right: 10px; /* Add some space between the buttons */
+}
+
+.buy-course {
+  background-color: black;
+  border: 2px solid white;
+}
+
+
+    .link div {
+      font-family: Roboto, Arial;
+      font-size: 12px;
+      display: inline-block; /* Change display to inline-block */
+      vertical-align: middle;
+    }
+    .large-video-grid{
+      padding-left:7% ;
+    }
+    @media (max-width:900px) {
+      .sidebar{
+        display: none;
+
+      }
+      .ham{
+        display: none;
+      }
+      .video-grid,.large-video-grid{
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+      .r img{
+        display: none;
+      }
+      .r .channel{
+        display: block;
+        width:30px
+      }
+      .m .search-bar{
+        width: 100px;
+      }
+      .m .voi{
+        display :none;
+      }
+      .l .you{
+        width:90ppx
+      }
+
+      
+    }
+    .link {
+    margin-bottom: 40px; /* Increase the gap between each photo */
+  }
+  </style>
+</head>
+<body style="padding-top: 80px; margin: 0; padding-left: 96px; padding-right: 24px; background-color: rgb(248, 248, 248) ;background-image: url('WhatsApp Image 2024-06-10 at 10.27.35 PM.jpeg');">
+  <div class="sidebar" id="sidebar">
+    <div class="link">
+      <img src="42FE0229-FB5E-4006-A43D-A4855F8952D2.jpeg" style="width: 100px; height: auto;">
+    </div>
+    <div class="link">
+      <img src="BA0C1FC3-C4FF-450E-9BF3-C344AF2D198F.jpeg" style="width: 100px; height: auto;">
+    </div>
+  </div>
+
+  <div class="header" style="height: 55px; display: flex; flex-direction: row; justify-content: space-between; position: fixed; top: 0; left: 0; right: 0; background-color: white; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(228, 228, 228); z-index: 100;background-image: url('/Users/tanishksingh/Desktop/html/WhatsApp Image 2024-06-10 at 10.27.35 PM.jpeg');">
+    <div class="l" style="align-items: center; width: 150px; display: flex;">
+      <img class="ham" id="ham" src="hamburger-menu.svg">
+      <img class ="you" src="WhatsApp Image 2024-06-10 at 10.22.08 PM.jpeg"  alt="STEADY Logo">
+            <h1>STEADY</h1>
+    </div>
+    
+    <div class="r" style="flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; width: 500px; margin-right: 20px;">
+      <input class="search-bar" type="text" placeholder="Search" style="flex-grow: 1; margin-right: 15px; border-radius: 30px; padding: 5px 10px; border: 2px solid #000;">
+      <button class="sea" style="margin-right: 15px; background-color: #f1f1f1; border: none; border-radius: 50%; padding: 5px;border: 2px solid #000;">
+        <img class="search" src="search.svg" style="width: 20px; height: 20px; filter: invert(50%);">
+      </button>
+      <div style="position: relative; margin-right: 15px;">
+        <img class="notifications" src="notifications.svg">
+        <div style="position: absolute; top: -2px; right: -5px; background-color: red; color: white; font-family: Roboto, Arial; font-size: 11px; padding-left: 5px; padding-top: 2px; padding-bottom: 2px; padding-right: 5px; border-radius: 10px;">3</div>
+      </div>
+      <img class="channel" src="user-circle-icon-2048x2048-lmkqor95.png" style="filter: brightness(50%); width: 30px; height: 30px;border: 2px solid #000;">
+    </div>
+    
+    
+    
+  </div>
+  <div class="content">
+    <h1>All The Skill You Need in One Place</h1>
+    <p>From critical skills to technical topics, Steady supports your professional development</p>
+  </div>
+  
+  <div class="video-grid">
+    <div class="video-preview">
+      <div class="thumbnail-row">
+        <a href="play.html"><img class="thumbnail" src="961542AF-A8B3-40F8-8EEA-EBC1EF8825E8.jpeg"></a>
+        <div class="time">14:20</div>
+      </div>
+      <div class="video-info-grid">
+        
+        <div class="video-info">
+          <p class="video-title">
+            <a href="play.html">Talking Tech and AI with Google CEO Sundar Pichai!</a>
+          </p>
+          <p class="video-author">
+            <div class="buttons">
+              <a href="play.html" class="free-trial">Free Trial</a>
+              <a href="payment.html" class="buy-course">Buy Course</a>
+            </div>
+          </p>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="video-preview">
+      <div class="thumbnail-row">
+        <a href="play.html"><img class="thumbnail" src="E95EC729-73A6-4047-BC4B-B5041C4A82C5.jpeg"></a>
+        <div class="time">14:20</div>
+      </div>
+      <div class="video-info-grid">
+        
+        <div class="video-info">
+          <p class="video-title">
+            <a href="play.html">Talking Tech and AI with Google CEO Sundar Pichai!</a>
+          </p>
+          <p class="video-author">
+            <div class="buttons">
+              <a href="play.html" class="free-trial">Free Trial</a>
+              <a href="payment.html" class="buy-course">Buy Course</a>
+            </div>
+          </p>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="video-preview">
+      <div class="thumbnail-row">
+        <a href="play.html"><img class="thumbnail" src="6E4FE78B-E494-4E92-9AD0-99958E1301C5.jpeg"></a>
+        <div class="time">14:20</div>
+      </div>
+      <div class="video-info-grid">
+        
+        <div class="video-info">
+          <p class="video-title">
+            <a href="play.html">Talking Tech and AI with Google CEO Sundar Pichai!</a>
+          </p>
+          <p class="video-author">
+            <div class="buttons">
+              <a href="play.html" class="free-trial">Free Trial</a>
+              <a href="payment.html" class="buy-course">Buy Course</a>
+            </div>
+          </p>
+          
+        </div>
+      </div>
+    </div>
+
+     
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      const sr = ScrollReveal({
+          origin: 'top',
+          distance: '60px',
+          duration: 2000,
+          delay: 200,
+      });
+
+      sr.reveal('.hero, .features', { delay: 200 });
+  </script>
+  </body>
+</html>
